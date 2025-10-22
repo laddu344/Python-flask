@@ -14,12 +14,11 @@ phases:
   pre_build:
     commands:
       - echo "Installing dependencies..."
-      - pip install -r day-14/simple-python-app/requirements.txt
+      - pip install -r requirements.txt
 
   build:
     commands:
       - echo "Running tests..."
-      - cd day-14/simple-python-app/
       - echo "Logging in to Docker Hub..."
       - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
       - echo "Building Docker image..."
@@ -34,4 +33,4 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: day-14/simple-python-app
+  base-directory: .
